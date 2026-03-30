@@ -19,6 +19,7 @@ This repository contains:
 - [Model Training](#model-training)
 - [Columns Used for Training](#columns-used-for-training)
 - [Input CSV Requirements for Prediction (Min and Max)](#input-csv-requirements-for-prediction-min-and-max)
+- [Testing Datasets](#testing-datasets)
 - [Prediction Output to Dashboard](#prediction-output-to-dashboard)
 - [Repository Structure](#repository-structure)
 
@@ -250,6 +251,18 @@ Expected event categories include donation and communication events. Typical val
 - phone_call
 - direct_mail
 - event
+
+## Testing Datasets
+Three sample datasets are included for end-to-end testing in:
+
+- [docs/datasets/Donors data1.csv](docs/datasets/Donors%20data1.csv)
+- [docs/datasets/Donors data2.csv](docs/datasets/Donors%20data2.csv)
+- [docs/datasets/Donors data3.csv](docs/datasets/Donors%20data3.csv)
+
+You can use these files directly from the Analyze page upload flow to verify:
+- CSV validation and preprocessing behavior
+- Risk scoring and dashboard rendering
+- Segment recommendations and manager briefing output
 
 ## Prediction Output to Dashboard
 After scoring, the system returns structured outputs used by the dashboard:
