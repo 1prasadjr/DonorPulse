@@ -1,0 +1,20 @@
+{
+  "target_column": "churned_in_next_180d",
+  "exclude_from_training": [
+    "donor_id",
+    "snapshot_date",
+    "churned_in_next_180d"
+  ],
+  "categorical_columns": [
+    "preferred_campaign_source",
+    "acquisition_source",
+    "donor_region"
+  ],
+  "split_strategy": "chronological_by_snapshot_date",
+  "selection_metric": "validation_pr_auc",
+  "risk_bands": {
+    "high_risk_min": 0.70,
+    "medium_risk_min": 0.40,
+    "low_risk_max": 0.39
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "split_strategy": "chronological_by_snapshot_date",
+  "train_rows": 2686,
+  "val_rows": 730,
+  "test_rows": 756,
+  "feature_columns": [
+    "days_since_last_donation",
+    "donations_last_30d",
+    "donations_last_90d",
+    "donations_last_180d",
+    "donations_last_365d",
+    "total_amount_last_90d",
+    "total_amount_last_180d",
+    "total_amount_last_365d",
+    "lifetime_donation_count",
+    "lifetime_donation_amount",
+    "avg_gift_amount",
+    "max_gift_amount",
+    "gift_amount_trend_90d_vs_prev_90d",
+    "donation_count_trend_90d_vs_prev_90d",
+    "days_since_last_communication",
+    "communications_last_30d",
+    "communications_last_90d",
+    "communications_last_180d",
+    "communications_last_365d",
+    "open_rate_last_90d",
+    "click_rate_last_90d",
+    "reply_rate_last_180d",
+    "attendance_rate_last_365d",
+    "converted_communications_last_180d",
+    "donor_tenure_days",
+    "preferred_campaign_source",
+    "acquisition_source",
+    "donor_region",
+    "is_recurring_donor"
+  ],
+  "categorical_columns": [
+    "preferred_campaign_source",
+    "acquisition_source",
+    "donor_region"
+  ],
+  "numeric_columns": [
+    "days_since_last_donation",
+    "donations_last_30d",
+    "donations_last_90d",
+    "donations_last_180d",
+    "donations_last_365d",
+    "total_amount_last_90d",
+    "total_amount_last_180d",
+    "total_amount_last_365d",
+    "lifetime_donation_count",
+    "lifetime_donation_amount",
+    "avg_gift_amount",
+    "max_gift_amount",
+    "gift_amount_trend_90d_vs_prev_90d",
+    "donation_count_trend_90d_vs_prev_90d",
+    "days_since_last_communication",
+    "communications_last_30d",
+    "communications_last_90d",
+    "communications_last_180d",
+    "communications_last_365d",
+    "open_rate_last_90d",
+    "click_rate_last_90d",
+    "reply_rate_last_180d",
+    "attendance_rate_last_365d",
+    "converted_communications_last_180d",
+    "donor_tenure_days",
+    "is_recurring_donor"
+  ],
+  "models": {
+    "logistic_regression": {
+      "validation": {
+        "roc_auc": 0.8353983792700694,
+        "pr_auc": 0.6905871845284588,
+        "precision_at_threshold": 0.7428571428571429,
+        "recall_at_threshold": 0.5531914893617021,
+        "f1_at_threshold": 0.6341463414634146,
+        "support_positive": 141
+      },
+      "test": {
+        "roc_auc": 0.8234098989784976,
+        "pr_auc": 0.6512251001594324,
+        "precision_at_threshold": 0.6756756756756757,
+        "recall_at_threshold": 0.5172413793103449,
+        "f1_at_threshold": 0.5859375,
+        "support_positive": 145
+      },
+      "decision_threshold": 0.7753653983665474
+    },
+    "catboost": {
+      "validation": {
+        "roc_auc": 0.957434767426459,
+        "pr_auc": 0.8761605832958124,
+        "precision_at_threshold": 0.7872340425531915,
+        "recall_at_threshold": 0.7872340425531915,
+        "f1_at_threshold": 0.7872340425531915,
+        "support_positive": 141
+      },
+      "test": {
+        "roc_auc": 0.924578136463683,
+        "pr_auc": 0.8126858830016693,
+        "precision_at_threshold": 0.72,
+        "recall_at_threshold": 0.7448275862068966,
+        "f1_at_threshold": 0.7322033898305085,
+        "support_positive": 145
+      },
+      "decision_threshold": 0.5357000583108267
+    }
+  },
+  "selected_model": "catboost"
+}

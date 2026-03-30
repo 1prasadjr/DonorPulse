@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Donor Intelligence Dashboard | Open Paws</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#e2e2e2",
+              "surface-tint": "#b7ccb9",
+              "surface-container-lowest": "#0d0f0f",
+              "inverse-primary": "#506354",
+              "on-error": "#690005",
+              "on-tertiary-container": "#ffbfc2",
+              "error": "#ffb4ab",
+              "background": "#121414",
+              "surface-variant": "#333535",
+              "on-secondary-container": "#432100",
+              "on-primary-fixed": "#0e1f13",
+              "inverse-surface": "#e2e2e2",
+              "outline-variant": "#434843",
+              "tertiary-fixed-dim": "#ffb2b7",
+              "secondary-fixed": "#ffdcc3",
+              "outline": "#8d928c",
+              "primary-container": "#4a5d4e",
+              "on-secondary": "#4d2600",
+              "on-tertiary-fixed": "#40000d",
+              "on-secondary-fixed-variant": "#6e3900",
+              "primary-fixed-dim": "#b7ccb9",
+              "tertiary-fixed": "#ffdadb",
+              "surface-bright": "#383939",
+              "surface-container": "#1e2020",
+              "surface-container-low": "#1a1c1c",
+              "on-background": "#e2e2e2",
+              "on-primary-container": "#c0d5c2",
+              "on-secondary-fixed": "#2f1500",
+              "secondary": "#ffb77d",
+              "tertiary": "#ffb2b7",
+              "on-primary-fixed-variant": "#394b3d",
+              "tertiary-container": "#b30036",
+              "primary-fixed": "#d3e8d5",
+              "on-tertiary-fixed-variant": "#92002a",
+              "surface-container-high": "#282a2a",
+              "surface": "#121414",
+              "on-tertiary": "#67001b",
+              "on-primary": "#233427",
+              "surface-container-highest": "#333535",
+              "inverse-on-surface": "#2f3131",
+              "primary": "#b7ccb9",
+              "on-surface-variant": "#c3c8c1",
+              "surface-dim": "#121414",
+              "on-error-container": "#ffdad6",
+              "secondary-fixed-dim": "#ffb77d",
+              "error-container": "#93000a",
+              "secondary-container": "#d97707"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(40, 42, 42, 0.4);
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .luminous-border {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .sage-glow {
+        box-shadow: 0 0 40px -10px rgba(183, 204, 185, 0.15);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#121414]/80 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex justify-between items-center px-8 py-4">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-[#E2E2E2]">Open Paws</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#E2E2E2]/60 hover:text-[#E2E2E2] transition-colors hover:bg-white/5 px-3 py-1 rounded-lg" href="#">Analyze</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-bold text-sm text-[#B7CCB9] border-b-2 border-[#B7CCB9] pb-1" href="#">Dashboard</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#E2E2E2]/60 hover:text-[#E2E2E2] transition-colors hover:bg-white/5 px-3 py-1 rounded-lg" href="#">Stewardship</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#E2E2E2]/60 hover:text-[#E2E2E2] transition-colors hover:bg-white/5 px-3 py-1 rounded-lg" href="#">Archives</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-[#B7CCB9] active:scale-95 transition-transform">notifications</button>
+<button class="material-symbols-outlined text-[#B7CCB9] active:scale-95 transition-transform">settings</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-white/10">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="professional male portrait with warm studio lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZpTCpNuylubYkmqlR_HeEa1jwTlYe22i8U6BUWfEiEYBjYHfnn2xwkESmPRYhACaobdscNSuTa4Iwm_JbQGVAL1GLxPiw-3R87F5JHuh2yEbWHjF0eUzv5TWuxCcyrNek5uvmG-JFJal_clWSGlD5BSsTgRnkR4KbNDH6GSy0FSPWg06C1RAewTIOiSbUPFBykeqLQ84-1GP77bRf1NCmLfHkR8DUydVppnI8oVg2rXydIQHPodQLsYwXv8rPeu6EgWSZIuEviNXI"/>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-20 px-8 max-w-7xl mx-auto w-full space-y-16">
+<!-- Hero Analytic Zone -->
+<section class="relative">
+<div class="max-w-3xl">
+<h1 class="text-6xl font-extrabold tracking-tighter mb-6 leading-[1.1]">
+                    Retention is currently <span class="text-primary italic">stabilizing</span> at 84%.
+                </h1>
+<p class="text-xl text-on-surface-variant font-light leading-relaxed">
+                    While overall loyalty remains high, our intelligence engine has identified <span class="text-primary font-semibold">12 mid-value donors</span> showing signs of donor fatigue. Strategic intervention this week is recommended to prevent a projected $14.2k revenue slip.
+                </p>
+</div>
+<!-- Atmospheric Background Glow -->
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+</section>
+<!-- Risk Distribution Strip -->
+<div class="w-full glass-card rounded-xl p-1 flex items-center h-20 overflow-hidden">
+<div class="flex-1 flex items-center justify-center gap-4 bg-primary/10 h-full px-6 rounded-lg transition-all hover:bg-primary/20 group cursor-default">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label text-xs tracking-widest uppercase text-primary font-bold">Low Risk: 72%</span>
+</div>
+<div class="flex-1 flex items-center justify-center gap-4 h-full px-6 transition-all hover:bg-secondary/10 group cursor-default">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label text-xs tracking-widest uppercase text-secondary/70 font-bold">Medium Risk: 19%</span>
+</div>
+<div class="flex-1 flex items-center justify-center gap-4 h-full px-6 transition-all hover:bg-error/10 group cursor-default">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-label text-xs tracking-widest uppercase text-error/70 font-bold">High Risk: 9%</span>
+</div>
+</div>
+<!-- Metrics & Graph Zone (Asymmetric Bento) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Key Metrics Zone -->
+<div class="lg:col-span-4 space-y-8">
+<div class="relative p-8 rounded-xl glass-card sage-glow overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<p class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-2">Total Analyzed</p>
+<h2 class="text-5xl font-black text-on-surface leading-none">4,821</h2>
+<p class="mt-4 text-primary text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12% vs last month
+                    </p>
+</div>
+<div class="relative p-8 rounded-xl glass-card overflow-hidden group">
+<p class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-2">High-Risk Count</p>
+<h2 class="text-5xl font-black text-error leading-none">43</h2>
+<p class="mt-4 text-on-surface-variant text-sm font-medium">Requiring immediate outreach</p>
+</div>
+<div class="relative p-8 rounded-xl glass-card overflow-hidden group">
+<p class="font-label text-xs tracking-widest uppercase text-on-surface-variant mb-2">Revenue at Risk</p>
+<h2 class="text-5xl font-black text-on-surface leading-none">$14.2k</h2>
+<p class="mt-4 text-secondary text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span> Projected 30-day slip
+                    </p>
+</div>
+</div>
+<!-- Churn Risk Trend Graph -->
+<div class="lg:col-span-8 h-full min-h-[500px] glass-card rounded-xl p-10 flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-2xl font-bold tracking-tight">Retention Velocity</h3>
+<p class="text-on-surface-variant text-sm mt-1">Rolling 6-month sentiment analysis</p>
+</div>
+<!-- Mock Graph Visualization -->
+<div class="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none">
+<svg class="w-full h-full preserve-3d" viewbox="0 0 800 300">
+<defs>
+<lineargradient id="sageGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#B7CCB9" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#B7CCB9" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,250 C100,240 150,280 250,220 C350,160 450,180 550,120 C650,60 750,80 800,40 L800,300 L0,300 Z" fill="url(#sageGradient)"></path>
+<path class="drop-shadow-[0_0_10px_rgba(183,204,185,0.5)]" d="M0,250 C100,240 150,280 250,220 C350,160 450,180 550,120 C650,60 750,80 800,40" fill="none" stroke="#B7CCB9" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex justify-between items-end relative z-10">
+<div class="space-y-1">
+<span class="text-3xl font-bold">84.2%</span>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-primary self-center"></span>
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Active Monitor</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 rounded-full glass-card text-xs font-label uppercase tracking-widest hover:bg-white/10 transition-colors">Export Report</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Top At-Risk Donors -->
+<section class="space-y-8">
+<div class="flex items-end justify-between">
+<div>
+<h3 class="text-3xl font-extrabold tracking-tighter">Priority Interventions</h3>
+<p class="text-on-surface-variant mt-2 max-w-xl">Donors exhibiting high behavioral drift. Early stewardship has a 64% historical recovery rate.</p>
+</div>
+<button class="text-primary font-bold text-sm tracking-wide uppercase hover:underline underline-offset-8 transition-all">View All Intelligence</button>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/5 bg-white/2">
+<th class="px-8 py-5 font-label text-xs tracking-widest uppercase text-on-surface-variant">Donor Identity</th>
+<th class="px-8 py-5 font-label text-xs tracking-widest uppercase text-on-surface-variant">Lifetime Value</th>
+<th class="px-8 py-5 font-label text-xs tracking-widest uppercase text-on-surface-variant">Risk Level</th>
+<th class="px-8 py-5 font-label text-xs tracking-widest uppercase text-on-surface-variant">Primary Signal</th>
+<th class="px-8 py-5"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-bold text-primary group-hover:scale-110 transition-transform">JD</div>
+<div>
+<p class="font-bold">Julianne DeWitt</p>
+<p class="text-xs text-on-surface-variant">Monthly Recurring • 4 yrs</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 font-bold">$12,400</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="w-[85%] h-full bg-error drop-shadow-[0_0_8px_#ffb4ab]"></div>
+</div>
+<span class="text-xs font-bold text-error uppercase">High Risk</span>
+</div>
+</td>
+<td class="px-8 py-6 text-on-surface-variant text-sm italic">Lapsed 3 consecutive cycles</td>
+<td class="px-8 py-6 text-right">
+<button class="p-2 rounded-full hover:bg-white/10 text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-bold text-secondary group-hover:scale-110 transition-transform">MK</div>
+<div>
+<p class="font-bold">Marcus Kaling</p>
+<p class="text-xs text-on-surface-variant">Annual Donor • 2 yrs</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 font-bold">$45,000</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="w-[45%] h-full bg-secondary drop-shadow-[0_0_8px_#ffb77d]"></div>
+</div>
+<span class="text-xs font-bold text-secondary uppercase">Medium Risk</span>
+</div>
+</td>
+<td class="px-8 py-6 text-on-surface-variant text-sm italic">Lowered giving amount by 40%</td>
+<td class="px-8 py-6 text-right">
+<button class="p-2 rounded-full hover:bg-white/10 text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-bold text-primary group-hover:scale-110 transition-transform">SC</div>
+<div>
+<p class="font-bold">Sarah Chen</p>
+<p class="text-xs text-on-surface-variant">Occasional • 6 yrs</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 font-bold">$2,850</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="w-[30%] h-full bg-secondary drop-shadow-[0_0_8px_#ffb77d]"></div>
+</div>
+<span class="text-xs font-bold text-secondary uppercase">Medium Risk</span>
+</div>
+</td>
+<td class="px-8 py-6 text-on-surface-variant text-sm italic">Unresponsive to 2 solicitations</td>
+<td class="px-8 py-6 text-right">
+<button class="p-2 rounded-full hover:bg-white/10 text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Stewardship Recommendations & Summary Brief -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<h4 class="text-xl font-bold tracking-tight">Strategic Recommendations</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card p-6 rounded-xl border-l-4 border-error">
+<span class="material-symbols-outlined text-error mb-4">history</span>
+<h5 class="font-bold mb-2">Win-Back: Recurring Lapses</h5>
+<p class="text-sm text-on-surface-variant leading-relaxed">For donors like Julianne, automated payment failure is the 90% likely cause. Send a "We Miss You" personalized impact video today.</p>
+<button class="mt-4 text-primary text-xs font-bold uppercase tracking-widest hover:underline">Launch Workflow</button>
+</div>
+<div class="glass-card p-6 rounded-xl border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary mb-4">psychology</span>
+<h5 class="font-bold mb-2">Mid-Value Re-engagement</h5>
+<p class="text-sm text-on-surface-variant leading-relaxed">Stagnant donors need new narrative anchors. Pivot their next stewardship piece to emphasize 'Community Resilience' vs 'Emergency Aid'.</p>
+<button class="mt-4 text-primary text-xs font-bold uppercase tracking-widest hover:underline">View Campaign Templates</button>
+</div>
+</div>
+</div>
+<!-- Manager Summary Brief -->
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full"></div>
+<h4 class="text-xl font-bold tracking-tight mb-6">Briefing: Week 42</h4>
+<div class="space-y-6">
+<div>
+<p class="font-label text-xs tracking-widest uppercase text-primary mb-1">What this means</p>
+<p class="text-sm text-on-surface-variant">The retention stabilizing is a positive signal, but the fatigue in mid-value donors suggests we are over-soliciting via email without enough direct impact reporting.</p>
+</div>
+<div>
+<p class="font-label text-xs tracking-widest uppercase text-primary mb-1">Weekly Action Plan</p>
+<ul class="text-sm text-on-surface-variant space-y-3">
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Call top 3 at-risk donors by Wednesday.
+                            </li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Audit the 'Fall Appeal' cadence for frequency.
+                            </li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Approve the sage-tier donor event list.
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-[#121414] border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 w-full gap-8 md:gap-0">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-lg font-black text-[#E2E2E2]">Open Paws</span>
+<p class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40">© 2024 Open Paws. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Security</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Intelligence Ethics</a>
+</div>
+</div>
+</footer>
+</body></html>

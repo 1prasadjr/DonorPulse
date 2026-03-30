@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Open Paws | Analyze &amp; Predict</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface": "#e2e2e2",
+            "surface-tint": "#b7ccb9",
+            "surface-container-lowest": "#0d0f0f",
+            "inverse-primary": "#506354",
+            "on-error": "#690005",
+            "on-tertiary-container": "#ffbfc2",
+            "error": "#ffb4ab",
+            "background": "#121414",
+            "surface-variant": "#333535",
+            "on-secondary-container": "#432100",
+            "on-primary-fixed": "#0e1f13",
+            "inverse-surface": "#e2e2e2",
+            "outline-variant": "#434843",
+            "tertiary-fixed-dim": "#ffb2b7",
+            "secondary-fixed": "#ffdcc3",
+            "outline": "#8d928c",
+            "primary-container": "#4a5d4e",
+            "on-secondary": "#4d2600",
+            "on-tertiary-fixed": "#40000d",
+            "on-secondary-fixed-variant": "#6e3900",
+            "primary-fixed-dim": "#b7ccb9",
+            "tertiary-fixed": "#ffdadb",
+            "surface-bright": "#383939",
+            "surface-container": "#1e2020",
+            "surface-container-low": "#1a1c1c",
+            "on-background": "#e2e2e2",
+            "on-primary-container": "#c0d5c2",
+            "on-secondary-fixed": "#2f1500",
+            "secondary": "#ffb77d",
+            "tertiary": "#ffb2b7",
+            "on-primary-fixed-variant": "#394b3d",
+            "tertiary-container": "#b30036",
+            "primary-fixed": "#d3e8d5",
+            "on-tertiary-fixed-variant": "#92002a",
+            "surface-container-high": "#282a2a",
+            "surface": "#121414",
+            "on-tertiary": "#67001b",
+            "on-primary": "#233427",
+            "surface-container-highest": "#333535",
+            "inverse-on-surface": "#2f3131",
+            "primary": "#b7ccb9",
+            "on-surface-variant": "#c3c8c1",
+            "surface-dim": "#121414",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb77d",
+            "error-container": "#93000a",
+            "secondary-container": "#d97707"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Plus Jakarta Sans"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)
+    }
+.luminous-edge {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1)
+    }
+.noise-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCyWcwHw1dL5UGX9B83ikhwwNH0hFCgPLZ_qhPkZQ0sGbRwFiST1krb9qKTwSYIFvBC12jFWVGU28s8DkDvj87Fen97wyRhkCxc5fcL3lEEQQgurs-pKm7FcWVeGchDBcCcRoQlbW1VT7J3AJQhStrS9ah8yetC71a5axkMocjcg_zVL3i8DEATMmLfoCTa16uRUiqlQZQ1ekaDKiad1JcrHQy61GQmYu5umNcqU5LV5FIZTiflriUOSXcLMnUYsZ-U8HY0DzPtle42);
+    opacity: 0.02;
+    pointer-events: none
+    }
+.sage-glow {
+    filter: drop-shadow(0 0 15px rgba(183, 204, 185, 0.3))
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col">
+<!-- TopNavBar Implementation from JSON -->
+<nav class="fixed top-0 w-full z-50 bg-[#121414]/80 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-none">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-[#E2E2E2]">Open Paws</span>
+<div class="hidden md:flex items-center gap-6 font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm">
+<a class="text-[#B7CCB9] font-bold border-b-2 border-[#B7CCB9] pb-1 transition-all duration-300" href="#">Analyze</a>
+<a class="text-[#E2E2E2]/60 hover:text-[#E2E2E2] transition-colors active:scale-95 transition-transform" href="#">Dashboard</a>
+<a class="text-[#E2E2E2]/60 hover:text-[#E2E2E2] transition-colors active:scale-95 transition-transform" href="#">Stewardship</a>
+<a class="text-[#E2E2E2]/60 hover:text-[#E2E2E2] transition-colors active:scale-95 transition-transform" href="#">Archives</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-white/5 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[#B7CCB9]">notifications</span>
+</button>
+<button class="p-2 hover:bg-white/5 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[#B7CCB9]">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/10 ml-2">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man in a dark studio setting with soft side lighting and modern aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrN6A1_10HGUo57ewUc1MBsm9ovxO528omMFy6STK-iqYoRAz3SSd1rS8KgU9oVXBNChZytu2RSmPSqHQAvHr7lf_l-KB8OtIAYHbQowTIZ6P9KFrrDALAqsFMR69xQEUtOQn8ZlJ_PMZSkb91-l2Cpl24vqZkqSHIr6Qxt3OobXx2xTBm6k-GoTKYS7nwqYQZUn_fv-xArn8sk0SwNK4ouBEQwdkUmEqMx9gjGijEuTQsSPD2zRI6QPG34jucPRij_v4UE50nEeLM"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-24 px-8 md:px-16 lg:px-24 flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Ambient Background Elements (Non-standard layout) -->
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-primary-container/10 blur-[150px] rounded-full"></div>
+<div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Left: Bold Messaging -->
+<div class="space-y-8 z-10">
+<div class="space-y-4">
+<h1 class="font-headline text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
+            Predicting donor loss <br/>
+<span class="text-primary italic">before it happens.</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant max-w-lg leading-relaxed">
+            Harnessing planetary-scale intelligence to secure your mission's future. Our predictive engine identifies stewardship priorities with surgical precision.
+          </p>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center luminous-edge transition-all group-hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Deep Intelligence</h3>
+<p class="text-sm text-on-surface/60">Advanced neural analysis of giving patterns.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center luminous-edge transition-all group-hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary">security</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Encrypted Privacy</h3>
+<p class="text-sm text-on-surface/60">Military-grade protection for donor data.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Central Upload Panel -->
+<div class="relative z-10">
+<!-- Glass Panel Main Container -->
+<div class="glass-panel luminous-edge rounded-[2rem] p-8 md:p-12 relative overflow-hidden">
+<div class="noise-texture absolute inset-0"></div>
+<div class="relative flex flex-col items-center text-center space-y-8">
+<!-- Animated Icon Area -->
+<div class="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mb-4 sage-glow border border-primary/20">
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+</div>
+<div class="space-y-2">
+<h2 class="font-headline text-2xl font-bold">Import Intelligence</h2>
+<p class="font-label text-sm text-on-surface/60 uppercase tracking-widest">Drop your donor CSV here to begin analysis</p>
+</div>
+<!-- Drag & Drop Zone (Visual) -->
+<div class="w-full border-2 border-dashed border-white/5 rounded-2xl py-12 flex flex-col items-center justify-center gap-4 bg-white/[0.02] hover:bg-white/[0.04] transition-all cursor-pointer">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg flex items-center gap-2">
+<span>Select CSV File</span>
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<p class="text-xs text-on-surface/40">Supported formats: .CSV, .XLSX (Max 500MB)</p>
+</div>
+<div class="flex items-center gap-4 w-full">
+<div class="h-[1px] bg-white/10 flex-grow"></div>
+<span class="text-xs font-label text-on-surface/30">OR</span>
+<div class="h-[1px] bg-white/10 flex-grow"></div>
+</div>
+<button class="w-full py-4 rounded-xl border border-outline-variant/30 font-bold hover:bg-white/5 transition-all text-on-surface/80 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">link</span>
+<span>URL Import</span>
+</button>
+</div>
+</div>
+<!-- Secondary Glass Elements below upload -->
+<div class="mt-6 flex flex-col gap-4">
+<!-- Status Panel -->
+<div class="glass-panel luminous-edge rounded-xl px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 bg-on-surface/20 rounded-full"></div>
+<span class="text-sm font-label text-on-surface/50 tracking-wide">FILE VALIDATION STATUS: <span class="text-on-surface">IDLE</span></span>
+</div>
+<span class="material-symbols-outlined text-on-surface/20">hourglass_empty</span>
+</div>
+<!-- Privacy Strip -->
+<div class="glass-panel luminous-edge rounded-xl px-6 py-4 flex items-center gap-4 bg-[#B7CCB9]/5">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<p class="text-xs font-label text-on-surface/70 leading-relaxed">
+<span class="font-bold text-primary">Privacy &amp; Ethics:</span> All donor data is automatically anonymized before analysis. Data never leaves your secure environment. <a class="underline hover:text-primary transition-colors" href="#">Read Ethics Charter.</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Implementation from JSON -->
+<footer class="w-full py-12 mt-auto bg-[#121414] border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 w-full">
+<div class="flex flex-col md:items-start items-center gap-2 mb-8 md:mb-0">
+<span class="text-lg font-black text-[#E2E2E2]">Open Paws</span>
+<span class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40">© 2024 Open Paws. All rights reserved.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Security</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs tracking-widest uppercase text-[#E2E2E2]/40 hover:text-[#B7CCB9] transition-colors opacity-80 hover:opacity-100" href="#">Intelligence Ethics</a>
+</div>
+</div>
+</footer>
+</body></html>
