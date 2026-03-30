@@ -93,7 +93,7 @@ The diagram below summarizes the full flow from upload to dashboard rendering.
 
 ### 1) Clone and enter project
 ```bash
-git clone <your-repo-url>
+git clone (https://github.com/1prasadjr/DonorPulse.git)
 cd DRP-Openpaws
 ```
 
