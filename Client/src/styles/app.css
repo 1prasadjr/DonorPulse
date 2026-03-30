@@ -1,5 +1,5 @@
 .container {
-  width: min(1040px, calc(100vw - 2rem));
+  width: min(1300px, calc(100vw - 2rem));
   margin: 0 auto;
 }
 
@@ -112,9 +112,17 @@
   z-index: 2;
 }
 
+.app-main-analyze {
+  padding-bottom: 2.4rem;
+}
+
 .app-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   margin-top: 3rem;
+}
+
+.app-footer-analyze {
+  margin-top: 1.5rem;
 }
 
 .footer-inner {
@@ -146,6 +154,14 @@
   grid-template-areas: "hero upload";
   align-items: start;
   margin-top: 0.55rem;
+}
+
+.analyze-centered {
+  margin-top: 0;
+  min-height: clamp(460px, calc(100vh - 255px), 660px);
+  align-content: center;
+  align-items: center;
+  padding-top: 0.7rem;
 }
 
 .hero-copy {
@@ -516,6 +532,13 @@ td small {
     margin-top: 0.35rem;
   }
 
+  .analyze-centered {
+    min-height: auto;
+    align-content: start;
+    align-items: start;
+    padding-top: 0.2rem;
+  }
+
   .split-section,
   .recommendation-grid,
   .insights-grid {
@@ -529,7 +552,7 @@ td small {
 
 @media (max-width: 760px) {
   .container {
-    width: min(1040px, calc(100vw - 1.2rem));
+    width: min(1300px, calc(100vw - 1.2rem));
   }
 
   .top-nav-content {

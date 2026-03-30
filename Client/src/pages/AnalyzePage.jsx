@@ -50,7 +50,7 @@ export function AnalyzePage() {
   };
 
   return (
-    <div className="page-grid analyze-grid">
+    <div className="page-grid analyze-grid analyze-centered">
       <section className="hero-copy">
         <h1>
           Analyze donor risks <span>before it becomes churn</span>
