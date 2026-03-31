@@ -1,3 +1,4 @@
+import { API_UPLOAD_TIMEOUT_MS } from "../config/env";
 import { request } from "./httpClient";
 
 export function uploadAndPredict(file, topN = 25) {
@@ -8,5 +9,6 @@ export function uploadAndPredict(file, topN = 25) {
   return request("/predictions/upload", {
     method: "POST",
     body: formData,
+    timeoutMs: API_UPLOAD_TIMEOUT_MS,
   });
 }

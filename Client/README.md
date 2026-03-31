@@ -19,7 +19,14 @@ Create a `.env` file in `Client` (or copy `.env.example`) with:
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080/api/v1
+VITE_API_REQUEST_TIMEOUT_MS=45000
+VITE_API_UPLOAD_TIMEOUT_MS=150000
 ```
+
+Notes:
+- `VITE_API_REQUEST_TIMEOUT_MS` controls default timeout for normal API requests.
+- `VITE_API_UPLOAD_TIMEOUT_MS` controls timeout for CSV upload + inference requests.
+- The app uses hash-based routing (`/#/...`) so refresh works on static hosts without custom rewrite rules.
 
 ## Install
 
@@ -57,7 +64,7 @@ npm run lint
 1. Start backend from `Server` so `http://localhost:8080/api/v1/health` responds.
 2. Ensure backend CORS includes `http://localhost:5173`.
 3. Start client via `npm run dev` in `Client`.
-4. Open `http://localhost:5173/analyze`.
+4. Open `http://localhost:5173/#/analyze`.
 5. Verify:
 	- Health and model metadata load.
 	- CSV upload succeeds.

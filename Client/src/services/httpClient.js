@@ -1,6 +1,4 @@
-import { API_BASE_URL } from "../config/env";
-
-const REQUEST_TIMEOUT_MS = 45_000;
+import { API_BASE_URL, API_REQUEST_TIMEOUT_MS } from "../config/env";
 
 function isRetriableNetworkError(error) {
   if (!error) {
@@ -20,9 +18,15 @@ export class ApiError extends Error {
   }
 }
 
-function toApiErrorFromNetwork(error) {
+function toApiErrorFromNetwork(error, timeoutMs = API_REQUEST_TIMEOUT_MS) {
   if (error?.name === "AbortError") {
-    return new ApiError("Request timed out while waiting for server response", 504, "REQUEST_TIMEOUT");
+    const timeoutInSeconds = Math.ceil(timeoutMs / 1000);
+    return new ApiError(
+      `Request timed out after ${timeoutInSeconds} seconds while waiting for server response`,
+      504,
+      "REQUEST_TIMEOUT",
+      { timeoutMs },
+    );
   }
 
   if (error instanceof TypeError) {
@@ -50,17 +54,18 @@ async function parseJsonSafe(response) {
 }
 
 export async function request(path, options = {}) {
-  const method = (options.method || "GET").toUpperCase();
+  const { timeoutMs = API_REQUEST_TIMEOUT_MS, ...fetchOptions } = options;
+  const method = (fetchOptions.method || "GET").toUpperCase();
   const maxRetries = method === "GET" ? 1 : 0;
   let lastError;
 
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
     const controller = new AbortController();
-    const timeoutHandle = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    const timeoutHandle = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
       const response = await fetch(`${API_BASE_URL}${path}`, {
-        ...options,
+        ...fetchOptions,
         signal: controller.signal,
       });
 
@@ -88,9 +93,9 @@ export async function request(path, options = {}) {
         continue;
       }
 
-      throw toApiErrorFromNetwork(error);
+      throw toApiErrorFromNetwork(error, timeoutMs);
     }
   }
 
-  throw toApiErrorFromNetwork(lastError);
+  throw toApiErrorFromNetwork(lastError, timeoutMs);
 }
