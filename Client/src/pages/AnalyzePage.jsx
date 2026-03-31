@@ -56,8 +56,8 @@ export function AnalyzePage() {
           Analyze donor risks <span>before it becomes churn</span>
         </h1>
         <p>
-          Upload donor history once and let DonorPulse run validation, preprocessing, feature engineering, and churn
-          prediction through your backend pipeline.
+          Upload your donor data and let DonorPulse instantly analyze it to identify at-risk donors and recommend
+          targeted retention strategies.
         </p>
       </section>
 
